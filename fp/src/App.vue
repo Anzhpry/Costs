@@ -5,6 +5,7 @@
       <main>
         <AddPaumentForm @addNewPayment="addDate" />
         <PaymentsDisplay :list="paymentsList" />
+        <ListCosts />
       </main>
     </div>
   </div>
@@ -13,11 +14,13 @@
 <script>
 import PaymentsDisplay from "./components/PaymentsDisplay.vue";
 import AddPaumentForm from "./components/AddPaymentForm.vue";
+import ListCosts from "./components/ListCosts.vue";
 export default {
   name: "App",
   components: {
     PaymentsDisplay,
     AddPaumentForm,
+    ListCosts,
   },
   data() {
     return {
@@ -65,9 +68,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-
-.wrapper {
 }
 
 .title {
