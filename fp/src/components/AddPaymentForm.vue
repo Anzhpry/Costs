@@ -1,7 +1,13 @@
 <template>
   <div>
     <input placeholder="Amount" v-model="value" />
-    <input placeholder="Type" v-model="category" />
+    <div class="categoryList" v-if="categoryList.length">
+      <select v-model="category">
+        <option v-for="(option, idx) in categoryList" :key="idx">
+          {{ option }}
+        </option>
+      </select>
+    </div>
     <input placeholder="Date" v-model="date" />
     <button @click="onSave">Save</button>
   </div>
@@ -26,6 +32,9 @@ export default {
 
       return `${d}.${m}.${y}`;
     },
+    categoryList() {
+      return this.$store.getters.getCategoryList;
+    },
   },
   methods: {
     onSave() {
@@ -36,6 +45,11 @@ export default {
       };
       this.$emit("addNewPayment", data);
     },
+  },
+  mounted() {
+    if (!this.categoryList.length) {
+      this.$store.dispatch("fetchCategoryList");
+    }
   },
 };
 </script>

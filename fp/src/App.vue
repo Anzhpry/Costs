@@ -2,6 +2,7 @@
   <div id="app">
     <div class="wrapper">
       <header class="title">My personal costs</header>
+      <div>My total {{ getFPV }}</div>
       <main>
         <AddPaumentForm @addNewPayment="addDate" />
         <PaymentsDisplay :list="paymentsList" />
@@ -15,6 +16,7 @@
 import PaymentsDisplay from "./components/PaymentsDisplay.vue";
 import AddPaumentForm from "./components/AddPaymentForm.vue";
 import ListCosts from "./components/ListCosts.vue";
+import { mapMutations, mapGetters } from "vuex";
 export default {
   name: "App",
   components: {
@@ -23,11 +25,19 @@ export default {
     ListCosts,
   },
   data() {
-    return {
-      paymentsList: [],
-    };
+    return {};
+  },
+  computed: {
+    ...mapGetters(["getFullPaymentValue", "getPaymentList"]),
+    getFPV() {
+      return this.$store.getters.getFullPaymentValue;
+    },
+    paymentsList() {
+      return this.$store.getters.getPaymentList;
+    },
   },
   methods: {
+    ...mapMutations(["setPaymentListData"]),
     fetchData() {
       return [
         {
@@ -51,11 +61,18 @@ export default {
       ];
     },
     addDate(data) {
-      this.paymentsList.push(data);
+      /* this.paymentsList.push(data); */
+      this.$store.commit("addDataPaymentsList", data);
     },
   },
   created() {
-    this.paymentsList = this.fetchData();
+    /*    this.paymentsList = this.fetchData(); */
+    this.setPaymentListData(this.fetchData());
+  },
+  mounted() {
+    if (!this.paymentsList.length) {
+      this.$store.dispatch("fetchData");
+    }
   },
 };
 </script>
