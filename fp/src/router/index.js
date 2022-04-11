@@ -14,12 +14,21 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: DashboardView
+    component: () => import('../views/DashboardView.vue'),
+    meta: {
+      title: 'Dashboard',
+      track: false
+    }
   },
   {
     path: '/dashboard/:page',
     name: 'dashboard',
     component: DashboardView
+  },
+  {
+    path: '/add/:category',
+    name: 'AddPaymentPage',
+    component: () => import('../components/AddPaymentForm.vue')
   },
   {
     path: '/about*',
