@@ -43,7 +43,7 @@ export default {
         category: this.category,
         date: this.data || this.getCurrentDate,
       };
-      this.$store.commit("addDatePaymentList", data);
+      this.$store.commit("addDataPaymentsList", data);
       this.$emit("addNewPayment", data);
     },
   },

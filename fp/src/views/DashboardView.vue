@@ -4,7 +4,8 @@
       <header class="title">My personal costs</header>
       <div>My total {{ getFPV }}</div>
       <main>
-        <AddPaumentForm @addNewPayment="addDate" />
+        <!--   <AddPaymentForm @addNewPayment="addDate" /> -->
+        <!--   <ModalWindowAddPaymentForm /> -->
         <PaymentsDisplay :list="currentElements" />
         <MyPagination
           :length="paymentsList.length"
@@ -12,6 +13,7 @@
           :cur="cur"
           @changePage="onChangePage"
         />
+        <button @click="addFormOpen">ADD NEW COST +</button>
       </main>
     </div>
   </div>
@@ -19,18 +21,25 @@
 
 <script>
 import PaymentsDisplay from "../components/PaymentsDisplay.vue";
-import AddPaumentForm from "../components/AddPaymentForm.vue";
+/* import AddPaymentForm from "../components/AddPaymentForm.vue"; */
 import MyPagination from "../components/MyPagination.vue";
 import { mapMutations } from "vuex";
+/* import ModalWindowAddPaymentForm from "../components/ModalWindowAddPaymentForm.vue"; */
 export default {
   name: "App",
   components: {
     PaymentsDisplay,
-    AddPaumentForm,
+    /*     AddPaymentForm, */
     MyPagination,
+    /* ModalWindowAddPaymentForm, */
   },
   data() {
     return {
+      /* addFormShown: false, */
+      settings: {
+        content: "addpaymentform",
+        title: "Add new Payment",
+      },
       n: 5,
       cur: 1,
     };
@@ -79,6 +88,12 @@ export default {
     },
     onChangePage(p) {
       this.cur = p;
+    },
+    addFormOpen() {
+      this.$modal.show("addpaymentform", {
+        content: "addpaymentform",
+        title: "Add new Payment",
+      });
     },
   },
   created() {

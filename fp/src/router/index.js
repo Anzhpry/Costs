@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import DashboardView from '../views/DashboardView'
+
+
 
 Vue.use(VueRouter)
 
@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: () => import('../views/HomeView.vue')
   },
   {
     path: '/dashboard',
@@ -23,7 +23,10 @@ const routes = [
   {
     path: '/dashboard/:page',
     name: 'dashboard',
-    component: DashboardView
+    component: () => import('../views/DashboardView.vue'),
+    meta: {
+      title: "Dashboard"
+    }
   },
   {
     path: '/add/:category',
@@ -40,7 +43,7 @@ const routes = [
   },
   {
     path: '*',
-    component: HomeView
+    component: () => import('../views/HomeView.vue')
   }
 ]
 
