@@ -43,12 +43,27 @@ export default {
         category: this.category,
         date: this.data || this.getCurrentDate,
       };
+      this.$store.commit("addDatePaymentList", data);
       this.$emit("addNewPayment", data);
     },
   },
-  mounted() {
+  async mounted() {
     if (!this.categoryList.length) {
-      this.$store.dispatch("fetchCategoryList");
+      await this.$store.dispatch("fetchCategoryList");
+    }
+
+    if (this.$route.params?.category) {
+      this.category = this.$route.params.category;
+      if (this.$route.query?.value) {
+        this.value = this.$route.query.value;
+      }
+    }
+
+    if (this.category && this.value) {
+      this.onSave();
+      this.router.push({
+        name: "dashpoard",
+      });
     }
   },
 };
