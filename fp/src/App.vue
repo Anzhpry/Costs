@@ -2,10 +2,16 @@
   <div id="app">
     <div class="wrapper">
       <header class="title">My personal costs</header>
+      <div>My total {{ getFPV }}</div>
       <main>
         <AddPaumentForm @addNewPayment="addDate" />
-        <PaymentsDisplay :list="paymentsList" />
-        <ListCosts />
+        <PaymentsDisplay :list="currentElements" />
+        <MyPagination
+          :length="paymentsList.length"
+          :n="n"
+          :cur="cur"
+          @changePage="onChangePage"
+        />
       </main>
     </div>
   </div>
@@ -14,20 +20,38 @@
 <script>
 import PaymentsDisplay from "./components/PaymentsDisplay.vue";
 import AddPaumentForm from "./components/AddPaymentForm.vue";
-import ListCosts from "./components/ListCosts.vue";
+import MyPagination from "./components/MyPagination.vue";
+import { mapMutations } from "vuex";
 export default {
   name: "App",
   components: {
     PaymentsDisplay,
     AddPaumentForm,
-    ListCosts,
+    MyPagination,
   },
   data() {
     return {
-      paymentsList: [],
+      n: 5,
+      cur: 1,
     };
   },
+  computed: {
+    /*   ...mapGetters(["getFullPaymentValue", "getPaymentList"]), */
+    getFPV() {
+      return this.$store.getters.getFullPaymentValue;
+    },
+    paymentsList() {
+      return this.$store.getters.getPaymentList;
+    },
+    currentElements() {
+      return this.paymentsList.slice(
+        this.n * (this.cur - 1),
+        this.n * (this.cur - 1) + this.n
+      );
+    },
+  },
   methods: {
+    ...mapMutations(["setPaymentListData"]),
     fetchData() {
       return [
         {
@@ -51,11 +75,17 @@ export default {
       ];
     },
     addDate(data) {
-      this.paymentsList.push(data);
+      this.$store.commit("addDataPaymentsList", data);
+    },
+    onChangePage(p) {
+      this.cur = p;
     },
   },
   created() {
-    this.paymentsList = this.fetchData();
+    this.setPaymentListData(this.fetchData());
+  },
+  mounted() {
+    this.$store.dispatch("fetchData");
   },
 };
 </script>
