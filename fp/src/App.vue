@@ -12,14 +12,21 @@
     <transition name="fade">
       <ModalWindowAddPaymentForm v-if="modalShown" :settings="settings" />
     </transition>
+    <transition name="fade">
+      <ContextMenu />
+    </transition>
   </div>
 </template>
 
 <script>
 import ModalWindowAddPaymentForm from "./components/ModalWindowAddPaymentForm.vue";
+import ContextMenu from "./components/ContextMenu.vue";
 export default {
   name: "App",
-  components: { ModalWindowAddPaymentForm },
+  components: {
+    ModalWindowAddPaymentForm,
+    ContextMenu,
+  },
   data() {
     return {
       modalShown: false,

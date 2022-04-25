@@ -24,7 +24,8 @@ export default new Vuex.Store({
     },
     addCategoryList(state, payload) {
       state.categoryList = payload
-    }
+    },
+
   },
   actions: {
     fetchData({ commit }) {
