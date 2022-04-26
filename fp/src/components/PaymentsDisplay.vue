@@ -44,7 +44,7 @@ export default {
       console.log(item);
     },
     deleteItem(id) {
-      console.log(id);
+      this.$store.commit("paymentListDeleteItem", id);
     },
     onClickContextItem(event, item) {
       const items = [
