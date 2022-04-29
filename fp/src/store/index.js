@@ -24,7 +24,12 @@ export default new Vuex.Store({
     },
     addCategoryList(state, payload) {
       state.categoryList = payload
-    }
+    },
+    paymentListDeleteItem(state, payload) {
+      /*     state.paymentList.$remove(payload) */
+      state.paymentList.splice(payload)
+    },
+
   },
   actions: {
     fetchData({ commit }) {
@@ -52,6 +57,15 @@ export default new Vuex.Store({
         }, 1000)
       }).then(res => {
         commit('addCategoryList', res)
+      })
+    },
+    fetchDeleteItem({ commit }) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve()
+        }, 1000)
+      }).then(res => {
+        commit('paymentListDeleteItem', res)
       })
     }
   },
