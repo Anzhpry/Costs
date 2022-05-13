@@ -7,7 +7,7 @@
       <input v-model.number="operand2" type="number" name="operand2" />
       = {{ result }}
     </div>
-    <div class="errors" v-if="error">Ошибка: {{ error }}</div>
+    <div class="errors" v-if="error" name="error">Ошибка: {{ error }}</div>
     <div class="keyboard">
       <button
         v-for="operand in operands"
@@ -28,7 +28,7 @@
       <button v-for="btn in btns" :key="btn" @click="pushBtn(btn)">
         {{ btn }}
       </button>
-      <button @click="deleteNum()">&#10229;</button>
+      <button name="delete" @click="deleteNum()">&#10229;</button>
     </div>
 
     <div>

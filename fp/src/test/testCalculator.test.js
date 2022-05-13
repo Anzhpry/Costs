@@ -50,4 +50,53 @@ describe('Test Calculator', () => {
 
     })
 
+    it('test method divide', () => {
+        const wrapper = mount(MyCalculator)
+        const operand1 = wrapper.find('input[name=operand1]')
+        operand1.element.value = "4"
+        operand1.trigger('input')
+
+        const operand2 = wrapper.find('input[name=operand2]')
+        operand2.setValue('2')
+
+        const btn = wrapper.find('button[name="/"]')
+        btn.trigger('click')
+
+        expect(wrapper.vm.result).toBe(2)
+
+    })
+
+    it('test method mult', () => {
+        const wrapper = mount(MyCalculator)
+        const operand1 = wrapper.find('input[name=operand1]')
+        operand1.element.value = "5"
+        operand1.trigger('input')
+
+        const operand2 = wrapper.find('input[name=operand2]')
+        operand2.setValue('2')
+
+        const btn = wrapper.find('button[name="*"]')
+        btn.trigger('click')
+
+        expect(wrapper.vm.result).toBe(10)
+
+    })
+
+    it('test method degree', () => {
+        const wrapper = mount(MyCalculator)
+        const operand1 = wrapper.find('input[name=operand1]')
+        operand1.element.value = "2"
+        operand1.trigger('input')
+
+        const operand2 = wrapper.find('input[name=operand2]')
+        operand2.setValue('3')
+
+        const btn = wrapper.find('button[name="**"]')
+        btn.trigger('click')
+        expect(wrapper.vm.result).toBe(8)
+
+    })
+
+
+
 })

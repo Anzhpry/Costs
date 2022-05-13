@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/30</span>
+                <span class='fraction'>20/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.66% </span>
+                <span class="strong">53.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/15</span>
+                <span class='fraction'>8/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">44.44% </span>
+                <span class="strong">77.77% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/9</span>
+                <span class='fraction'>7/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/30</span>
+                <span class='fraction'>20/30</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -268,7 +268,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -294,9 +294,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -304,14 +304,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -321,18 +321,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -364,7 +364,7 @@
       &lt;input v-model.number="operand2" type="number" name="operand2" /&gt;
       = {{ result }}
     &lt;/div&gt;
-    &lt;div class="errors" v-if="error"&gt;Ошибка: {{ error }}&lt;/div&gt;
+    &lt;div class="errors" v-if="error" name="error"&gt;Ошибка: {{ error }}&lt;/div&gt;
     &lt;div class="keyboard"&gt;
       &lt;button
         v-for="operand in operands"
@@ -385,7 +385,7 @@
       &lt;button v-for="btn in btns" :key="btn" @click="pushBtn(btn)"&gt;
         {{ btn }}
       &lt;/button&gt;
-      &lt;button @click="deleteNum()"&gt;&amp;#10229;&lt;/button&gt;
+      &lt;button name="delete" @click="deleteNum()"&gt;&amp;#10229;&lt;/button&gt;
     &lt;/div&gt;
 &nbsp;
     &lt;div&gt;
@@ -449,15 +449,15 @@ export default {
         case "-":
           this.substract();
           break;
-<span class="branch-2 cbranch-no" title="branch not covered" >        case "/":</span>
-<span class="cstat-no" title="statement not covered" >          this.divide();</span>
-<span class="cstat-no" title="statement not covered" >          break;</span>
-<span class="branch-3 cbranch-no" title="branch not covered" >        case "*":</span>
-<span class="cstat-no" title="statement not covered" >          this.multiply();</span>
-<span class="cstat-no" title="statement not covered" >          break;</span>
-<span class="branch-4 cbranch-no" title="branch not covered" >        case "**":</span>
-<span class="cstat-no" title="statement not covered" >          this.degree();</span>
-<span class="cstat-no" title="statement not covered" >          break;</span>
+        case "/":
+          this.divide();
+          break;
+        case "*":
+          this.multiply();
+          break;
+        case "**":
+          this.degree();
+          break;
       }
     },
     add() {
@@ -466,19 +466,19 @@ export default {
     substract() {
       this.result = this.operand1 - this.operand2;
     },
-<span class="fstat-no" title="function not covered" >    divide() {</span>
-<span class="cstat-no" title="statement not covered" >      if (this.operand2 === 0) {</span>
+    divide() {
+<span class="missing-if-branch" title="if path not taken" >I</span>      if (this.operand2 === 0) {
 <span class="cstat-no" title="statement not covered" >        this.error = "На 0 делить нельзя!";</span>
 <span class="cstat-no" title="statement not covered" >        return;</span>
       } else {
-<span class="cstat-no" title="statement not covered" >        this.result = this.operand1 / this.operand2;</span>
+        this.result = this.operand1 / this.operand2;
       }
     },
-<span class="fstat-no" title="function not covered" >    multiply() {</span>
-<span class="cstat-no" title="statement not covered" >      this.result = this.operand1 * this.operand2;</span>
+    multiply() {
+      this.result = this.operand1 * this.operand2;
     },
-<span class="fstat-no" title="function not covered" >    degree() {</span>
-<span class="cstat-no" title="statement not covered" >      this.result = Math.pow(this.operand1, this.operand2);</span>
+    degree() {
+      this.result = Math.pow(this.operand1, this.operand2);
     },
   },
 };
@@ -508,7 +508,7 @@ a {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Wed May 04 2022 17:33:11 GMT+0300 (Москва, стандартное время)
+                at Thu May 05 2022 12:19:43 GMT+0300 (Москва, стандартное время)
             </div>
         <script src="../../../prettify.js"></script>
         <script>
