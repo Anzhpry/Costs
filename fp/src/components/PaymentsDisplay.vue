@@ -1,5 +1,21 @@
 <template>
-  <div class="list">
+<v-container>
+  <v-row>
+        <v-col :cols="3">#</v-col>
+        <v-col :cols="4">Date</v-col>
+        <v-col :cols="4">Category</v-col>
+        <v-col :cols="1">Value</v-col>
+  </v-row>
+  <v-row v-for="item in list" :key="item.id">
+    <v-col :cols="3"> {{item.id}} </v-col>
+     <v-col :cols="4">{{item.date}}</v-col>
+      <v-col :cols="4">{{item.category}}</v-col>
+       <v-col :cols="1">{{item.value}}</v-col>
+  </v-row>
+</v-container>
+
+
+ <!--  <div class="list">
     <table>
       <tr>
         <th>#</th>
@@ -27,7 +43,7 @@
         </tr>
       </table>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -39,7 +55,7 @@ export default {
       default: () => [],
     },
   },
-  methods: {
+ /*  methods: {
     editItem(item) {
       console.log(item);
     },
@@ -63,7 +79,7 @@ export default {
       ];
       this.$contextMenu.show({ event, items });
     },
-  },
+  }, */
 };
 </script>
 

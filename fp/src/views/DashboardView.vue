@@ -1,11 +1,32 @@
 <template>
-  <div id="app">
-    <div class="wrapper">
+  <v-container>
+    <v-row>
+      <v-col>
+        <div class="text-h5 text-sm-h3 pb-3">My personal costs</div>
+
+
+      <v-dialog
+      v-model="dialog">
+      <template v-slot:activator="{ on }">
+        
+        <v-btn color="teal" dark v-on="on">
+          ADD NEW COST <v-icon>mdi-plus</v-icon>
+        </v-btn>
+        </template>
+        <v-card>
+          <AddPaymentForm ref="addpaymentForm" />
+        </v-card>
+       </v-dialog>
+        <PaymentsDisplay :list="paymentsList" />
+      </v-col>
+       <v-col>
+         Диагарамма
+       </v-col>
+    </v-row>
+   <!--  <div class="wrapper">
       <header class="title">My personal costs</header>
       <div>My total {{ getFPV }}</div>
       <main>
-        <!--   <AddPaymentForm @addNewPayment="addDate" /> -->
-        <!--   <ModalWindowAddPaymentForm /> -->
         <PaymentsDisplay :list="currentElements" />
         <MyPagination
           :length="paymentsList.length"
@@ -15,24 +36,23 @@
         />
         <button @click="addFormOpen">ADD NEW COST +</button>
       </main>
-    </div>
-  </div>
+    </div> -->
+  </v-container>
 </template>
 
 <script>
 import PaymentsDisplay from "../components/PaymentsDisplay.vue";
-/* import AddPaymentForm from "../components/AddPaymentForm.vue"; */
-import MyPagination from "../components/MyPagination.vue";
-import { mapMutations } from "vuex";
-/* import ModalWindowAddPaymentForm from "../components/ModalWindowAddPaymentForm.vue"; */
+
+/* import MyPagination from "../components/MyPagination.vue"; */
+ import { mapMutations } from "vuex";
+import AddPaymentForm from "@/components/AddPaymentForm.vue"; 
+  
 export default {
   name: "App",
   components: {
     PaymentsDisplay,
-    /*     AddPaymentForm, */
-    MyPagination,
-    /* ModalWindowAddPaymentForm, */
-  },
+    AddPaymentForm
+},
   data() {
     return {
       /* addFormShown: false, */
@@ -40,12 +60,13 @@ export default {
         content: "addpaymentform",
         title: "Add new Payment",
       },
+      dialog: false,
       n: 5,
       cur: 1,
     };
   },
   computed: {
-    /*   ...mapGetters(["getFullPaymentValue", "getPaymentList"]), */
+/*       ...mapGetters(["getFullPaymentValue", "getPaymentList"]), */
     getFPV() {
       return this.$store.getters.getFullPaymentValue;
     },
@@ -85,13 +106,14 @@ export default {
     },
     addDate(data) {
       this.$store.commit("addDataPaymentsList", data);
+  this.dialog = false
     },
     onChangePage(p) {
       this.cur = p;
     },
     addFormOpen() {
       this.$modal.show("addpaymentform", {
-        content: "addpaymentform",
+        content: "AddPaymentForm",
         title: "Add new Payment",
       });
     },
